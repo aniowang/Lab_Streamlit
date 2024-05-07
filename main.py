@@ -18,7 +18,7 @@ authenticator = stauth.Authenticate(
 
 def main_page():
     st.markdown("# Main page 🎈")
-    st.write('現在時間時區',[pd.Timestamp.now(tz='Asia/Shanghai'))
+    st.write('現在時間時區',pd.Timestamp.now(tz='Asia/Shanghai'))
     #添加側邊攔
     st.sidebar.write('測試版本：V0.0.1') 
     st.sidebar.write('測試時間：',pd.Timestamp.now()) 

@@ -32,6 +32,7 @@ def main_page():
         st.write('未建立db')
 
     st.write(os.listdir())
+    st.write('秘密使用者字串',username)
     
 
 if __name__=="__main__": 
@@ -51,7 +52,7 @@ if __name__=="__main__":
         st.sidebar.write(f'Welcome *{st.session_state["name"]}*')
         #登入成功後才執行main()
         main_page() 
-        st.write('秘密使用者字串',username)
+        
     elif st.session_state["authentication_status"] is False:
         st.error('您輸入的帳號/密碼 錯誤')
     elif st.session_state["authentication_status"] is None:

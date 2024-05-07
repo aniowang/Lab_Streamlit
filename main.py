@@ -26,10 +26,10 @@ def main_page():
     st.sidebar.write('測試時間：',pd.Timestamp.now()) 
    
     try:
-    sqlite3.connect('ex.db')
-    print('建立')
+        sqlite3.connect('ex.db')
+        st.write('建立db')
     except:
-    print('未建立')
+        st.write('未建立db')
     
 
 if __name__=="__main__": 

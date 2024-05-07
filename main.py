@@ -32,7 +32,9 @@ def main_page():
         st.write('未建立db')
 
     st.write(os.listdir())
-    st.write('秘密使用者字串', st.secrets['user_name'])
+
+    #透過設定可以將變數加密使用 https://docs.streamlit.io/deploy/streamlit-community-cloud/deploy-your-app/secrets-management
+    #st.write('秘密使用者字串', st.secrets['user_name'])
     
 
 if __name__=="__main__": 

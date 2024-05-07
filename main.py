@@ -30,6 +30,8 @@ def main_page():
         st.write('建立db')
     except:
         st.write('未建立db')
+
+    st.write(os.listdir())
     
 
 if __name__=="__main__": 

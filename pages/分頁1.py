@@ -16,9 +16,7 @@ authenticator = stauth.Authenticate(
 )
 
 def page1():
-    
-
-    
+       
     st.write('測試時間：',pd.Timestamp.now(tz='Asia/Shanghai'))
     
     #添加側邊攔

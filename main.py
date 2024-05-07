@@ -7,6 +7,8 @@ import pandas as pd
 import os
 import sqlite3
 
+st.set_page_config(layout="wide")
+
 with open('./config.yaml') as file:
     config = yaml.load(file, Loader=SafeLoader)
 

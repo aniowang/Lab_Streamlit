@@ -50,7 +50,8 @@ if __name__=="__main__":
         authenticator.logout(location='sidebar',button_name='確認登出')
         st.sidebar.write(f'Welcome *{st.session_state["name"]}*')
         #登入成功後才執行main()
-        main_page()         
+        main_page() 
+        st.write('秘密使用者字串',username)
     elif st.session_state["authentication_status"] is False:
         st.error('您輸入的帳號/密碼 錯誤')
     elif st.session_state["authentication_status"] is None:

@@ -32,7 +32,7 @@ def main_page():
         st.write('未建立db')
 
     st.write(os.listdir())
-    st.write('秘密使用者字串',user_name)
+    st.write('秘密使用者字串', st.secrets['user_name'])
     
 
 if __name__=="__main__": 

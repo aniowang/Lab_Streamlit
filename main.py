@@ -24,12 +24,12 @@ def main_page():
     #添加側邊攔
     st.sidebar.write('測試版本：V0.0.1') 
     st.sidebar.write('測試時間：',pd.Timestamp.now()) 
-    
-    
-    
-    
-    
-    
+   
+    try:
+    sqlite3.connect('ex.db')
+    print('建立')
+    except:
+    print('未建立')
     
 
 if __name__=="__main__": 

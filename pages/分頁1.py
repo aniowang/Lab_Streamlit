@@ -7,8 +7,7 @@ import pandas as pd
 from pydrive.auth import GoogleAuth
 from pydrive.drive import GoogleDrive
 
-gauth=GoogleAuth()
-gauth.LocalWebserverAuth()
+
 
 with open('./config.yaml') as file:
     config = yaml.load(file, Loader=SafeLoader)
@@ -41,13 +40,12 @@ def page1():
     #添加側邊攔
     st.sidebar.write('測試版本：V0.0.1') 
     st.sidebar.write('測試時間：',pd.Timestamp.now(tz='Asia/Shanghai')) 
-
+    
+    gauth=GoogleAuth()
+    gauth.LocalWebserverAuth()
     drive=GoogleDrive(gauth)
-
-    file1=drive.CreateFile({'title':'Test.txt'})
-    
-    file1.SetContentString('Hello')
-    
+    file1=drive.CreateFile({'title':'Test.txt'})    
+    file1.SetContentString('Hello')    
     file1.Upload()
 
 if __name__=="__main__":

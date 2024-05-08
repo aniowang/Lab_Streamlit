@@ -42,6 +42,14 @@ def page1():
     st.sidebar.write('測試版本：V0.0.1') 
     st.sidebar.write('測試時間：',pd.Timestamp.now(tz='Asia/Shanghai')) 
 
+    drive=GoogleDrive(gauth)
+
+    file1=drive.CreateFile({'title':'Test.txt'})
+    
+    file1.SetContentString('Hello')
+    
+    file1.Upload()
+
 if __name__=="__main__":
     if st.session_state["authentication_status"] is None:
         """

@@ -14,7 +14,11 @@ authenticator = stauth.Authenticate(
     config['cookie']['expiry_days'],
     config['pre-authorized']
 )
-
+def load_data(url):
+    df = pd.read_csv(url)
+    return df
+    
+@st.cache_data  # 👈 Add the caching decorator
 def page2():    
     st.write('測試時間：',pd.Timestamp.now(tz='Asia/Shanghai'))
     
@@ -22,16 +26,9 @@ def page2():
     st.sidebar.write('測試版本：V0.0.1') 
     st.sidebar.write('測試時間：',pd.Timestamp.now(tz='Asia/Shanghai')) 
     
-@st.cache_data  # 👈 Add the caching decorator
-def load_data(url):
-    df = pd.read_csv(url)
-    return df
-
     df = load_data("https://github.com/plotly/datasets/raw/master/uber-rides-data1.csv")
     st.dataframe(df)
-
     st.button("Rerun")
-
 
 
 if __name__=="__main__":

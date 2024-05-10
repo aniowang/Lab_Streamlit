@@ -31,8 +31,8 @@ def page2():
     n=np.random.randint(1,20)
     st.write('隨機顯示行數：',n)
     st.dataframe(df.head(n))
-    st.button("Rerun")
-    st.toast('重新整理')
+    if st.button("Rerun"):
+        st.toast('重新整理')
 
 
 if __name__=="__main__":

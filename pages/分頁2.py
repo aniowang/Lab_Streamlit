@@ -32,7 +32,7 @@ def page2():
     def load_df():
         df = load_data("https://github.com/plotly/datasets/raw/master/uber-rides-data1.csv")
         return df
-        
+    load_df()    
     n=np.random.randint(1,20)
     st.write('隨機顯示行數：',n)
     st.dataframe(df.head(n))

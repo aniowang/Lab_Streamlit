@@ -8,7 +8,7 @@ import os
 import sqlite3
 
 st.set_page_config(layout="wide")
-st.write('顯示秘密：',st.secrets["secret_test"])
+
 with open('./config.yaml') as file:
     config = yaml.load(file, Loader=SafeLoader)
 

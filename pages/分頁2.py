@@ -3,6 +3,7 @@ import yaml
 from yaml.loader import SafeLoader
 import streamlit as st
 import pandas as pd
+import random
 
 with open('./config.yaml') as file:
     config = yaml.load(file, Loader=SafeLoader)
@@ -27,7 +28,7 @@ def page2():
     st.sidebar.write('測試時間：',pd.Timestamp.now(tz='Asia/Shanghai')) 
     
     df = load_data("https://github.com/plotly/datasets/raw/master/uber-rides-data1.csv")
-    st.dataframe(df.head())
+    st.dataframe(df.head(random.randint(1,20)))
     st.button("Rerun")
 
 

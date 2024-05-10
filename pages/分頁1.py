@@ -31,7 +31,7 @@ def page1():
     
         # Every form must have a submit button
         submitted = st.form_submit_button('Submit')
-        st.toast('確認送出囉!')
+        st.toast('確認送出囉!',secret)
     
     #添加側邊攔
     st.sidebar.write('測試版本：V0.0.1') 

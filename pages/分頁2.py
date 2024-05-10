@@ -31,8 +31,10 @@ def page2():
     n=np.random.randint(1,20)
     st.write('隨機顯示行數：',n)
     st.dataframe(df.head(n))
+    #點擊按鈕後刷新頁面
     if st.button("Rerun"):
         st.rerun()
+        st.toast('頁面已更新')
 
 
 if __name__=="__main__":

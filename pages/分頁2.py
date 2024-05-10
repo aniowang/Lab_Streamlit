@@ -34,7 +34,7 @@ def page2():
     #點擊按鈕後刷新頁面
     if st.button("Rerun"):
         st.rerun()
-    st.toast('頁面已更新')
+    #st.toast('頁面已更新')
 
 
 if __name__=="__main__":

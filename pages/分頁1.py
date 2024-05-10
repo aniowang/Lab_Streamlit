@@ -15,7 +15,7 @@ authenticator = stauth.Authenticate(
     config['pre-authorized']
 )
 
-@st.cache_data(ttl=3600, show_spinner="正在加載資料...")
+
 def page1():
        
     st.write('測試時間：',pd.Timestamp.now(tz='Asia/Shanghai'))
@@ -53,6 +53,7 @@ if __name__=="__main__":
         authenticator.logout(location='sidebar',button_name='確認登出')
         st.sidebar.write(f'Welcome *{st.session_state["name"]}*')
         #登入成功後才執行page1()
+        @st.cache_data(ttl=3600, show_spinner="正在加載資料...")
         page1()         
     elif st.session_state["authentication_status"] is False:
         st.error('您輸入的帳號/密碼 錯誤')

@@ -19,7 +19,7 @@ def load_data(url):
     df = pd.read_csv(url)
     return df
     
-@st.cache_data(experimental_allow_widgets=True)  # 👈 Add the caching decorator
+
 def page2():    
     st.write('測試時間：',pd.Timestamp.now(tz='Asia/Shanghai'))
     
@@ -27,7 +27,12 @@ def page2():
     st.sidebar.write('測試版本：V0.0.1') 
     st.sidebar.write('測試時間：',pd.Timestamp.now(tz='Asia/Shanghai')) 
     n = None
-    df = load_data("https://github.com/plotly/datasets/raw/master/uber-rides-data1.csv")
+    
+    @st.cache_data(experimental_allow_widgets=True)  # 👈 Add the caching decorator
+    def load_df():
+        df = load_data("https://github.com/plotly/datasets/raw/master/uber-rides-data1.csv")
+        return df
+        
     n=np.random.randint(1,20)
     st.write('隨機顯示行數：',n)
     st.dataframe(df.head(n))

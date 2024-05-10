@@ -17,7 +17,7 @@ authenticator = stauth.Authenticate(
 )
 
     
-@st.cache_data(experimental_allow_widgets=True)  # 👈 Add the caching decorator
+# @st.cache_data(experimental_allow_widgets=True)  # 👈 Add the caching decorator
 def page3():    
     st.write('測試時間：',pd.Timestamp.now(tz='Asia/Shanghai'))
     

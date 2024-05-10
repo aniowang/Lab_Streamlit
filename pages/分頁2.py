@@ -32,7 +32,7 @@ def page2():
     st.write('隨機顯示行數：',n)
     st.dataframe(df.head(n))
     if st.button("Rerun"):
-        st.toast('重新整理')
+        st.rerun()
 
 
 if __name__=="__main__":

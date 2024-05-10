@@ -17,7 +17,7 @@ authenticator = stauth.Authenticate(
 )
 
     
-# @st.cache_data(experimental_allow_widgets=True)  # 👈 Add the caching decorator
+@st.cache_data(experimental_allow_widgets=True)  # 👈 Add the caching decorator
 def page3():    
     st.write('測試時間：',pd.Timestamp.now(tz='Asia/Shanghai'))
     
@@ -27,7 +27,7 @@ def page3():
     n = None
 
     n=np.random.randint(1,20)
-    st.write('隨機顯示行數：',n)
+    st.write('顯示隨機整數：',n)
 
     #點擊按鈕後刷新頁面
     if st.button("Rerun"):

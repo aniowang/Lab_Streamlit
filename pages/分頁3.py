@@ -32,7 +32,8 @@ def page3():
     #點擊按鈕後刷新頁面
     if st.button("Rerun"):
         st.rerun()
-
+    #顯示toml變數
+    st.write("隱藏變數：",st.secrets[test_var])
 
 
 if __name__=="__main__":

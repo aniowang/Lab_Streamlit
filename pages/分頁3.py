@@ -33,7 +33,7 @@ def page3():
     if st.button("Rerun"):
         st.rerun()
     #顯示toml變數
-    st.write("隱藏變數：",st.secrets["test_var"])
+    st.write("隱藏變數：",st.secrets["test_var1"])
 
 
 if __name__=="__main__":

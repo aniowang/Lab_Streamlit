@@ -32,9 +32,12 @@ def page2():
     n = None 
 
     df = load_data("https://github.com/plotly/datasets/raw/master/uber-rides-data1.csv")  
-    n=np.random.randint(1,20)
-    st.write('隨機顯示行數：',n)
-    st.dataframe(df.head(n))
+    
+    if 'df' in global():
+        st.write("預覽已下載數據")    
+        n=np.random.randint(1,20)
+        st.write('隨機顯示行數：',n)
+        st.dataframe(df.head(n))
     
     #點擊按鈕後刷新頁面
     if st.button("Rerun"):

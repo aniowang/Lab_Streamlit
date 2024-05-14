@@ -45,14 +45,14 @@ def page2():
     #點擊按鈕後刷新頁面
     if st.button("Rerun"):
         st.experimental_rerun()
-
-    #st.toast('頁面已更新')
-
-    for key in st.session_state.keys():
-        st.write("session",key)
-        
+    
+    #清除session裡面的df    
     if st.button("清除session"):
         del st.session_state["df"]
+    
+    #遍覽目前所有session的物件
+    for key in st.session_state.keys():
+        st.write("session",key)
 
 if __name__=="__main__":
     if st.session_state["authentication_status"] is None:
@@ -70,7 +70,10 @@ if __name__=="__main__":
         st.sidebar.write(f'Welcome *{st.session_state["name"]}*')
         #登入成功後才執行page1()
         page2()
-
+        if authenticator.logout():
+            for key in st.session_state.keys():
+                del st.session_state[key]
+            st.success('登出成功')
     elif st.session_state["authentication_status"] is False:
         st.error('您輸入的帳號/密碼 錯誤')
     elif st.session_state["authentication_status"] is None:

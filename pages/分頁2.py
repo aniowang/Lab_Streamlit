@@ -33,7 +33,7 @@ def page2():
 
     df = load_data("https://github.com/plotly/datasets/raw/master/uber-rides-data1.csv")  
     
-    if 'df' in globals():
+    if df in globals():
         st.write("預覽已下載數據")    
         n=np.random.randint(1,20)
         st.write('隨機顯示行數：',n)

@@ -71,11 +71,11 @@ if __name__=="__main__":
         #登入成功後才執行page1()
         page2()
         if st.session_state['logout']:
-            del st.session_state['df']
-            # try:
-            #     del st.session_state['df']
-            # except:
-            #     pass
+            # del st.session_state['df']
+            try:
+                del st.session_state['df']
+            except:
+                pass
     elif st.session_state["authentication_status"] is False:
         st.error('您輸入的帳號/密碼 錯誤')
     elif st.session_state["authentication_status"] is None:

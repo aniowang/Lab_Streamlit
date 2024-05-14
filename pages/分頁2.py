@@ -48,6 +48,9 @@ def page2():
 
     #st.toast('頁面已更新')
 
+    for key in st.session_state.keys():
+        st.write("session",key)
+
 
 if __name__=="__main__":
     if st.session_state["authentication_status"] is None:

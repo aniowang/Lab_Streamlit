@@ -20,7 +20,10 @@ authenticator = stauth.Authenticate(
     
 # @st.cache_data(experimental_allow_widgets=True)  # 👈 Add the caching decorator
 def page3():    
-    st.write('測試時間：',pd.Timestamp.now(tz='Asia/Shanghai'))
+    """
+    測試讀取sqlite db
+    """
+    # st.write('測試時間：',pd.Timestamp.now(tz='Asia/Shanghai'))
     
     #添加側邊攔
     st.sidebar.write('測試版本：V0.0.1') 
@@ -43,6 +46,7 @@ def page3():
     table1=pd.read_sql(sql,conn)
     st.write(table1)
 
+    #
 
 if __name__=="__main__":
     if st.session_state["authentication_status"] is None:

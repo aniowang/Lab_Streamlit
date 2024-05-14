@@ -37,7 +37,6 @@ def page2():
     st.dataframe(df.head(n))
     #點擊按鈕後刷新頁面
     if st.button("Rerun"):
-        st.button("Rerun")=False
         st.rerun()
     #st.toast('頁面已更新')
 

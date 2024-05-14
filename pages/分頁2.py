@@ -70,7 +70,7 @@ if __name__=="__main__":
         st.sidebar.write(f'Welcome *{st.session_state["name"]}*')
         #登入成功後才執行page1()
         page2()
-        if st.session_state['logout']:
+        if self.credentials['usernames'][st.session_state['username']]['logged_in'] = False:
             # del st.session_state['df']
             try:
                 del st.session_state['df']

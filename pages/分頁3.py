@@ -6,6 +6,13 @@ import pandas as pd
 import numpy as np
 import sqlite3
 
+"""
+
+    測試讀取sqlite db
+
+"""
+
+
 with open('./config.yaml') as file:
     config = yaml.load(file, Loader=SafeLoader)
 
@@ -20,9 +27,7 @@ authenticator = stauth.Authenticate(
     
 # @st.cache_data(experimental_allow_widgets=True)  # 👈 Add the caching decorator
 def page3():    
-    """
-    測試讀取sqlite db
-    """
+
     # st.write('測試時間：',pd.Timestamp.now(tz='Asia/Shanghai'))
     
     #添加側邊攔

@@ -48,7 +48,7 @@ def page3():
     --select * from sqlite_master
     --where type='table';
 
-    select * from artists;
+    select * from tracks;
     """    
     table1=pd.read_sql(sql,conn)
     st.write(table1)
@@ -63,8 +63,8 @@ def page3():
     Albums_title_list=list(table_albums["Title"])
 
     Albums_title=st.selectbox("選擇想檢視的專輯名稱",Albums_title_list)
-    
-    st.write("專輯ID",table_albums[table_albums['Title']==Albums_title])
+
+    st.write("專輯資訊",table_albums[table_albums['Title']==Albums_title])
 
     #根據選擇，顯示專輯作者
     if Albums_title:
@@ -79,6 +79,18 @@ def page3():
         Artist=pd.read_sql(sql,conn)
         st.write("專輯作者是：",Artist["Name"][0])
 
+    #根據選擇，顯示歌曲清單
+    if Albums_title:
+        AlbumId=table_albums[table_albums['Title']==Albums_title]['AlbumId']
+        
+        # st.success(f"專輯歌曲有：{Albums_title}")
+        sql=f"""
+        select Name from tracks
+        where  AlbumId = {int(AlbumId)}
+        ;
+        """
+        Artist=pd.read_sql(sql,conn)
+        st.write("專輯歌曲有：",Artist["Name"])
 
 if __name__=="__main__":
     if st.session_state["authentication_status"] is None:

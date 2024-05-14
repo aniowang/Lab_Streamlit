@@ -51,7 +51,7 @@ def page2():
     # for key in st.session_state.keys():
     #     st.write("session",key)
         
-    if st.botton("清除session"):
+    if st.button("清除session"):
         del st.session_stat["df"]
 
 if __name__=="__main__":

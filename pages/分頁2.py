@@ -29,18 +29,16 @@ def page2():
     #添加側邊攔
     st.sidebar.write('測試版本：V0.0.1') 
     st.sidebar.write('測試時間：',pd.Timestamp.now(tz='Asia/Shanghai')) 
-    n = None
-    
+    n = None    
     
     #點擊按鈕後刷新頁面
     if st.button("Rerun"):
         st.experimental_rerun()
-
     
     if st.button("下載資料集"):
         df = load_data("https://github.com/plotly/datasets/raw/master/uber-rides-data1.csv")
-    
-    if  df.shape[0]>0:
+
+    if 'df' in globals():
         n=np.random.randint(1,20)
         st.write('隨機顯示行數：',n)
         st.dataframe(df.head(n))

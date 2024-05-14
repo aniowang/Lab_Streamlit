@@ -51,7 +51,12 @@ def page3():
     table1=pd.read_sql(sql,conn)
     st.write(table1)
 
-    #
+    #測試讀取單一表單
+    sql="""
+    select * from albums;
+    """
+    table_albums=pd.read_sql(sql,conn)
+    st.write("專輯列表",table_albums)
 
 if __name__=="__main__":
     if st.session_state["authentication_status"] is None:

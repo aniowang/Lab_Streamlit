@@ -21,7 +21,7 @@ def load_data(url):
     df = pd.read_csv(url)
     return df
     
-
+@st.cache
 def page2():    
     st.write('測試時間：',pd.Timestamp.now(tz='Asia/Shanghai'))
     

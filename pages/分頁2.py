@@ -47,8 +47,8 @@ def page2():
         st.experimental_rerun()
     
     #清除session裡面的df    
-    if st.button("清除session"):
-        del st.session_state["df"]
+    # if st.button("清除session"):
+    #     del st.session_state["df"]
     
     #遍覽目前所有session的物件
     for key in st.session_state.keys():
@@ -71,10 +71,11 @@ if __name__=="__main__":
         #登入成功後才執行page1()
         page2()
         if st.session_state['logout']:
-            try:
-                del st.session_state['df']
-            except:
-                pass
+            del st.session_state['df']
+            # try:
+            #     del st.session_state['df']
+            # except:
+            #     pass
     elif st.session_state["authentication_status"] is False:
         st.error('您輸入的帳號/密碼 錯誤')
     elif st.session_state["authentication_status"] is None:

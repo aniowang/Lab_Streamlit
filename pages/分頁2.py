@@ -33,8 +33,8 @@ def page2():
     if 'df' not in st.session_state:
         st.session_state.df = load_data("https://github.com/plotly/datasets/raw/master/uber-rides-data1.csv")      
         
-    n=np.random.randint(1,20)
-    st.dataframe(st.session_state.df.head(n))
+    # n=np.random.randint(1,20)
+    # st.dataframe(st.session_state.df.head(n))
     
     if st.button("更新預覽已下載數據"):    
         n=np.random.randint(1,20)

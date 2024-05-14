@@ -44,6 +44,11 @@ def page2():
     
     #點擊按鈕後刷新頁面
     if st.button("Rerun"):
+        # del st.session_state['df']
+        try:
+            del st.session_state['df']
+        except:
+            pass
         st.experimental_rerun()   
     
     #遍覽目前所有session的物件

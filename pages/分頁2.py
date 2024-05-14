@@ -69,7 +69,10 @@ if __name__=="__main__":
         if st.sidebar.button("確認登出"):
             # for key in st.session_state.keys():
             #     del st.session_state[key]
-            del st.session_state['df']
+            try:
+                del st.session_state['df']
+            except:
+                pass
             authenticator.logout()
             st.success('登出成功')
         # authenticator.logout(location='sidebar',button_name='確認登出')

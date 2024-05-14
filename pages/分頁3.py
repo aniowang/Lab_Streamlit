@@ -4,6 +4,7 @@ from yaml.loader import SafeLoader
 import streamlit as st
 import pandas as pd
 import numpy as np
+import sqlite3
 
 with open('./config.yaml') as file:
     config = yaml.load(file, Loader=SafeLoader)
@@ -24,16 +25,23 @@ def page3():
     #添加側邊攔
     st.sidebar.write('測試版本：V0.0.1') 
     st.sidebar.write('測試時間：',pd.Timestamp.now(tz='Asia/Shanghai')) 
-    n = None
-
-    n=np.random.randint(1,20)
-    st.write('顯示隨機整數：',n)
-
-    #點擊按鈕後刷新頁面
-    if st.button("Rerun"):
-        st.rerun()
+    # n = None
+    # n=np.random.randint(1,20)
+    # st.write('顯示隨機整數：',n)
+    # #點擊按鈕後刷新頁面
+    # if st.button("Rerun"):
+    #     st.rerun()
     #顯示toml變數
     st.write("隱藏變數：",st.secrets["test_var1"])
+
+    #測試讀取db
+    conn = sqlite3.connect('./sqlite/chinook.db')
+    sql="""
+    select * from sqlite_master
+    where type='table';
+    """    
+    table1=pd.read_sql(sql,conn)
+    st.write(table)
 
 
 if __name__=="__main__":

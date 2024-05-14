@@ -32,7 +32,7 @@ def page3():
     # if st.button("Rerun"):
     #     st.rerun()
     #顯示toml變數
-    st.write("隱藏變數：",st.secrets["test_var1"])
+    # st.write("隱藏變數：",st.secrets["test_var1"])
 
     #測試讀取db
     conn = sqlite3.connect('./sqlite/chinook.db')

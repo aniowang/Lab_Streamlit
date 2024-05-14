@@ -48,8 +48,8 @@ def page2():
 
     #st.toast('頁面已更新')
 
-    # for key in st.session_state.keys():
-    #     st.write("session",key)
+    for key in st.session_state.keys():
+        st.write("session",key)
         
     if st.button("清除session"):
         del st.session_state["df"]

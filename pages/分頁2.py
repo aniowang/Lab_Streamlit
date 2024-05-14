@@ -44,15 +44,11 @@ def page2():
     
     #點擊按鈕後刷新頁面
     if st.button("Rerun"):
-        st.experimental_rerun()
-    
-    #清除session裡面的df    
-    # if st.button("清除session"):
-    #     del st.session_state["df"]
+        st.experimental_rerun()   
     
     #遍覽目前所有session的物件
-    for key in st.session_state.keys():
-        st.write("session",key)
+    # for key in st.session_state.keys():
+    #     st.write("session",key)
 
 if __name__=="__main__":
     if st.session_state["authentication_status"] is None:
@@ -68,8 +64,11 @@ if __name__=="__main__":
     if st.session_state["authentication_status"]:
         authenticator.logout(location='sidebar',button_name='確認登出')
         st.sidebar.write(f'Welcome *{st.session_state["name"]}*')
+        
         #登入成功後才執行page1()
         page2()
+        
+        # 登出>清除session裡面的df
         if st.session_state['authentication_status'] is None:
             # del st.session_state['df']
             try:

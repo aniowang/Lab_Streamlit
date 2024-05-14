@@ -41,7 +41,7 @@ def page3():
     where type='table';
     """    
     table1=pd.read_sql(sql,conn)
-    st.write(table)
+    st.write(table1)
 
 
 if __name__=="__main__":

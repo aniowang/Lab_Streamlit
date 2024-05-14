@@ -66,19 +66,25 @@ if __name__=="__main__":
         location='main',
         fields={'Form name':'登入', 'Username':'使用者名稱', 'Password':'密碼', 'Login':'確認登入'})    
     if st.session_state["authentication_status"]:
-        if st.sidebar.button("確認登出"):
-            # for key in st.session_state.keys():
-            #     del st.session_state[key]
+        # if st.sidebar.button("確認登出"):
+        #     # for key in st.session_state.keys():
+        #     #     del st.session_state[key]
+        #     try:
+        #         del st.session_state['df']
+        #     except:
+        #         pass
+        #     stauth.logout()
+        #     st.success('登出成功')
+        authenticator.logout(location='sidebar',button_name='確認登出')
+        st.sidebar.write(f'Welcome *{st.session_state["name"]}*')
+        #登入成功後才執行page1()
+        page2()
+        if st.session_state['logout']:
             try:
                 del st.session_state['df']
             except:
                 pass
-            stauth.logout()
             st.success('登出成功')
-        # authenticator.logout(location='sidebar',button_name='確認登出')
-        st.sidebar.write(f'Welcome *{st.session_state["name"]}*')
-        #登入成功後才執行page1()
-        page2()
     elif st.session_state["authentication_status"] is False:
         st.error('您輸入的帳號/密碼 錯誤')
     elif st.session_state["authentication_status"] is None:

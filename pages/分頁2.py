@@ -4,6 +4,7 @@ from yaml.loader import SafeLoader
 import streamlit as st
 import pandas as pd
 import numpy as np
+import time
 
 with open('./config.yaml') as file:
     config = yaml.load(file, Loader=SafeLoader)
@@ -38,6 +39,7 @@ def page2():
     #點擊按鈕後刷新頁面
     if st.button("Rerun"):
         st.experimental_rerun()
+        time.sleep(0.2)
     #st.toast('頁面已更新')
 
 

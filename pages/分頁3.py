@@ -45,18 +45,40 @@ def page3():
     #測試讀取db
     conn = sqlite3.connect('./sqlite/chinook.db')
     sql="""
-    select * from sqlite_master
-    where type='table';
+    --select * from sqlite_master
+    --where type='table';
+
+    select * from artists;
     """    
     table1=pd.read_sql(sql,conn)
     st.write(table1)
+    # table1["tbl_name"]
 
     #測試讀取單一表單
     sql="""
     select * from albums;
     """
     table_albums=pd.read_sql(sql,conn)
-    st.write("專輯列表",table_albums)
+
+    Albums_title_list=list(table_albums["Title"])
+
+    Albums_title=st.selectbox("選擇想檢視的專輯名稱",Albums_title_list)
+    
+    st.write("專輯ID",table_albums[table_albums['Title']==Albums_title])
+
+    #根據選擇，顯示專輯作者
+    if Albums_title:
+        ArtistId=table_albums[table_albums['Title']==Albums_title]['ArtistId']
+        
+        st.success(f"您選擇的專輯是：{Albums_title}")
+        sql=f"""
+        select Name from artists
+        where  ArtistId = {int(ArtistId)}
+        ;
+        """
+        Artist=pd.read_sql(sql,conn)
+        st.write("專輯作者是：",Artist["Name"][0])
+
 
 if __name__=="__main__":
     if st.session_state["authentication_status"] is None:

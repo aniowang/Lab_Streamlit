@@ -36,10 +36,8 @@ def page2():
     n=np.random.randint(1,20)
     st.write('隨機顯示行數：',n)
     st.dataframe(df.head(n))
-    #點擊按鈕後刷新頁面
-    if st.button("Rerun"):
-        st.experimental_rerun()
-        time.sleep(0.2)
+
+
     #st.toast('頁面已更新')
 
 
@@ -58,7 +56,10 @@ if __name__=="__main__":
         authenticator.logout(location='sidebar',button_name='確認登出')
         st.sidebar.write(f'Welcome *{st.session_state["name"]}*')
         #登入成功後才執行page1()
-        page2()         
+        page2()
+        #點擊按鈕後刷新頁面
+        if st.button("Rerun"):
+            st.experimental_rerun()
     elif st.session_state["authentication_status"] is False:
         st.error('您輸入的帳號/密碼 錯誤')
     elif st.session_state["authentication_status"] is None:

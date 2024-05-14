@@ -7,9 +7,8 @@ import numpy as np
 import sqlite3
 
 """
-
-    測試讀取sqlite db
-
+    測試讀取Chinook (sqlite)  
+    (資料來源：SQLite Tutorial ) https://www.sqlitetutorial.net/sqlite-sample-database/
 """
 
 

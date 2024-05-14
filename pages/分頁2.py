@@ -73,7 +73,7 @@ if __name__=="__main__":
                 del st.session_state['df']
             except:
                 pass
-            authenticator.logout()
+            stauth.logout()
             st.success('登出成功')
         # authenticator.logout(location='sidebar',button_name='確認登出')
         st.sidebar.write(f'Welcome *{st.session_state["name"]}*')

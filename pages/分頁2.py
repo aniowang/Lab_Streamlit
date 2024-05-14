@@ -31,7 +31,7 @@ def page2():
     st.sidebar.write('測試時間：',pd.Timestamp.now(tz='Asia/Shanghai')) 
     # n = None 
     if 'df' not in st.session_state:
-        df = load_data("https://github.com/plotly/datasets/raw/master/uber-rides-data1.csv")      
+        st.session_state.df = load_data("https://github.com/plotly/datasets/raw/master/uber-rides-data1.csv")      
         
     n=np.random.randint(1,20)
     st.dataframe(st.session_state.df.head(n))

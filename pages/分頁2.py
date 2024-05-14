@@ -42,14 +42,14 @@ def page2():
             st.write('隨機顯示行數：',n)
             st.dataframe(st.session_state.df.head(n))    
     
-    #點擊按鈕後刷新頁面
-    if st.button("Rerun"):
-        # del st.session_state['df']
-        try:
-            del st.session_state['df']
-        except:
-            pass
-        st.experimental_rerun()   
+        #建立重新整理按鈕(清除session+刷新頁面)
+        if st.button("Rerun"):
+            # del st.session_state['df']
+            try:
+                del st.session_state['df']
+            except:
+                pass
+            st.experimental_rerun()   
     
     #遍覽目前所有session的物件
     # for key in st.session_state.keys():

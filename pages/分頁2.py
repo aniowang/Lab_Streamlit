@@ -36,10 +36,10 @@ def page2():
     n=np.random.randint(1,20)
     st.dataframe(st.session_state.df.head(n))
     
-    # if st.button("更新預覽已下載數據"):    
-    #     n=np.random.randint(1,20)
-    #     st.write('隨機顯示行數：',n)
-    #     st.dataframe(st.session_state.df.head(n))
+    if st.button("更新預覽已下載數據"):    
+        n=np.random.randint(1,20)
+        st.write('隨機顯示行數：',n)
+        st.dataframe(st.session_state.df.head(n))
 
     
     

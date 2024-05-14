@@ -4,3 +4,5 @@
 *登入密碼已雜湊(generate_key.py) \
 2.尚未建立雲端sql \
 3.各分頁管控
+4.下載檔案用session暫存，提供局部更新
+5.登出後清除session

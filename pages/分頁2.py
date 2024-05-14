@@ -52,7 +52,7 @@ def page2():
     #     st.write("session",key)
         
     if st.button("清除session"):
-        del st.session_stat["df"]
+        del st.session_state["df"]
 
 if __name__=="__main__":
     if st.session_state["authentication_status"] is None:

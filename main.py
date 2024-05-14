@@ -27,11 +27,11 @@ def main_page():
     st.sidebar.write('測試版本：V0.0.1') 
     st.sidebar.write('測試時間：',pd.Timestamp.now()) 
    
-    try:
-        sqlite3.connect('ex.db')
-        st.write('建立db')
-    except:
-        st.write('未建立db')
+    # try:
+    #     sqlite3.connect('ex.db')
+    #     st.write('建立db')
+    # except:
+    #     st.write('未建立db')
 
     st.write(os.listdir())
 

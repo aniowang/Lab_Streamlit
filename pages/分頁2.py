@@ -40,7 +40,7 @@ def page2():
     if st.button("下載資料集"):
         df = load_data("https://github.com/plotly/datasets/raw/master/uber-rides-data1.csv")
     
-    if  df is not None:
+    if  df.shape[0]>0:
         n=np.random.randint(1,20)
         st.write('隨機顯示行數：',n)
         st.dataframe(df.head(n))

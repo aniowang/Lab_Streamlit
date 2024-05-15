@@ -47,7 +47,7 @@ def page3():
     --select * from sqlite_master
     --where type='table';
 
-    select * from invoices;
+    select * from tracks;
     """    
     table1=pd.read_sql(sql,conn)
     st.write(table1)
@@ -69,7 +69,7 @@ def page3():
     if Albums_title:
         ArtistId=table_albums[table_albums['Title']==Albums_title]['ArtistId']
         
-        st.success(f"您選擇的專輯是：{Albums_title}")
+        st.success(fr"您選擇的專輯是：{Albums_title}")
         sql=f"""
         select Name from artists
         where  ArtistId = {int(ArtistId)}
@@ -95,13 +95,22 @@ def page3():
 
         #選擇單曲
         Song=st.selectbox("選擇想檢視的單曲名稱",Artist['Name'])
-        st.write(Song)
+
+        sql="""
+        select Name,TrackId from tracks
+        """
+        SongList=pd.read_sql(sql,conn)
+
+        SongId=SongList[SongList["Name"]==Song].reset_index(drop=True)['TrackId'][0]
+
+        # st.write(SongId)
+        # st.write(Song)
         if Song:
             sql=fr"""
                 select a.*,b.InvoiceLineId,b.Quantity,c.* from invoices a
                 left join (select * from invoice_items) b on a.invoiceId = b.invoiceId
                 left join (select * from tracks) c on c.TrackId = b.TrackId
-                where c.Name in ('{Song}')
+                where c.TrackId ={SongId}
                 order by a.InvoiceId desc 
                 """
             Song_txn=pd.read_sql(sql,conn)

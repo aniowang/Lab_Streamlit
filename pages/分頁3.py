@@ -63,16 +63,17 @@ def page3():
 
     Albums_title=st.selectbox("選擇想檢視的專輯名稱",Albums_title_list)
 
-    st.write("專輯資訊",table_albums[table_albums['Title']==Albums_title])
+    # st.write("專輯資訊",table_albums[table_albums['Title']==Albums_title])
 
     #根據選擇，顯示專輯作者
     if Albums_title:
         ArtistId=table_albums[table_albums['Title']==Albums_title]['ArtistId']
         
-        st.success(fr"您選擇的專輯是：{Albums_title}")
+        # st.success(fr"您選擇的專輯是：{Albums_title}")
+
         sql=f"""
         select Name from artists
-        where  ArtistId = {int(ArtistId)}
+        where  ArtistId = {int(ArtistId[0])}
         ;
         """
         Artist=pd.read_sql(sql,conn)
@@ -87,7 +88,7 @@ def page3():
         select a.Name ,b.Name as Format,c.Name as MusicType from tracks a
         left join (select * from media_types) b on b.MediaTypeId=a.MediaTypeId
         left join (select * from genres) c on c.GenreId=a.GenreId
-        where  a.AlbumId = {int(AlbumId)}
+        where  a.AlbumId = {int(AlbumId[0])}
         ;
         """
         Artist=pd.read_sql(sql,conn)
@@ -124,15 +125,15 @@ def page3():
     select a.*,b.InvoiceLineId,b.Quantity,c.* from invoices a
     left join (select * from invoice_items) b on a.invoiceId = b.invoiceId
     left join (select * from tracks) c on c.TrackId = b.TrackId
-    where c.AlbumId = {int(AlbumId)}
+    where c.AlbumId = {int(AlbumId[0])}
     order by a.InvoiceId desc ;
     """
     Txn=pd.read_sql(sql,conn)
 
     if Txn.shape[0]>0:
-        st.write("專輯銷售紀錄：",Txn)
+        st.write("專輯相關銷售紀錄：",Txn)
     else:
-        st.warning("無銷售紀錄")
+        st.warning("無專輯銷售紀錄")
 
     
 if __name__=="__main__":

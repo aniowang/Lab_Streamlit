@@ -47,7 +47,7 @@ def page3():
     --select * from sqlite_master
     --where type='table';
 
-    select * from tracks;
+    select * from invoices;
     """    
     table1=pd.read_sql(sql,conn)
     st.write(table1)
@@ -84,13 +84,48 @@ def page3():
         
         # st.success(f"專輯歌曲有：{Albums_title}")
         sql=f"""
-        select Name from tracks
-        where  AlbumId = {int(AlbumId)}
+        select a.Name ,b.Name as Format,c.Name as MusicType from tracks a
+        left join (select * from media_types) b on b.MediaTypeId=a.MediaTypeId
+        left join (select * from genres) c on c.GenreId=a.GenreId
+        where  a.AlbumId = {int(AlbumId)}
         ;
         """
         Artist=pd.read_sql(sql,conn)
-        st.write("專輯歌曲有：",Artist["Name"])
+        st.write("專輯歌曲有：",Artist)
 
+        #選擇單曲
+        Song=st.selectbox("選擇想檢視的單曲名稱",Artist['Name'])
+        st.write(Song)
+        if Song:
+            sql=fr"""
+                select a.*,b.InvoiceLineId,b.Quantity,c.* from invoices a
+                left join (select * from invoice_items) b on a.invoiceId = b.invoiceId
+                left join (select * from tracks) c on c.TrackId = b.TrackId
+                where c.Name in ('{Song}')
+                order by a.InvoiceId desc 
+                """
+            Song_txn=pd.read_sql(sql,conn)
+            if Song_txn.shape[0]>0:
+                st.write("單曲銷售紀錄：",Song_txn)
+            else:
+                st.warning("無銷售紀錄")
+
+    #根據選擇顯示專輯銷售金額
+    sql=f"""
+    select a.*,b.InvoiceLineId,b.Quantity,c.* from invoices a
+    left join (select * from invoice_items) b on a.invoiceId = b.invoiceId
+    left join (select * from tracks) c on c.TrackId = b.TrackId
+    where c.AlbumId = {int(AlbumId)}
+    order by a.InvoiceId desc ;
+    """
+    Txn=pd.read_sql(sql,conn)
+
+    if Txn.shape[0]>0:
+        st.write("專輯銷售紀錄：",Txn)
+    else:
+        st.warning("無銷售紀錄")
+
+    
 if __name__=="__main__":
     if st.session_state["authentication_status"] is None:
         """

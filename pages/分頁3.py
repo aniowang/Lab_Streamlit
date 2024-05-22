@@ -80,18 +80,18 @@ def page3():
         ;
         """
         Artist=pd.read_sql(sql,conn)
-        st.write("專輯作者是：",Artist["Name"][0])
+        st.write("專輯作者是：",Artist["Name"])
 
     #根據選擇，顯示歌曲清單
     if Albums_title:
-        AlbumId=table_albums[table_albums['Title']==Albums_title]['AlbumId'].iloc[0,0]
+        AlbumId=table_albums[table_albums['Title']==Albums_title]['AlbumId']
         
         # st.success(f"專輯歌曲有：{Albums_title}")
         sql=f"""
         select a.Name ,b.Name as Format,c.Name as MusicType from tracks a
         left join (select * from media_types) b on b.MediaTypeId=a.MediaTypeId
         left join (select * from genres) c on c.GenreId=a.GenreId
-        where  a.AlbumId = {int(AlbumId[0])}
+        where  a.AlbumId = {int(AlbumId)}
         ;
         """
         Artist=pd.read_sql(sql,conn)
@@ -128,7 +128,7 @@ def page3():
     select a.*,b.InvoiceLineId,b.Quantity,c.* from invoices a
     left join (select * from invoice_items) b on a.invoiceId = b.invoiceId
     left join (select * from tracks) c on c.TrackId = b.TrackId
-    where c.AlbumId = {int(AlbumId[0])}
+    where c.AlbumId = {int(AlbumId)}
     order by a.InvoiceId desc ;
     """
     Txn=pd.read_sql(sql,conn)

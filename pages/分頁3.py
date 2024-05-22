@@ -5,7 +5,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import sqlite3
-import plotly.express as px
+# import plotly.express as px
 
 """
     測試讀取Chinook (sqlite)  
@@ -142,8 +142,8 @@ def page3():
     # col1,col2 = st.columns(2)
 
     # with col1:
-    fig=px.bar(Txn,x="Name",y="Total")
-    st.plotly_chart(fig,use_container_width=True,height=200)
+    # fig=px.bar(Txn,x="Name",y="Total")
+    # st.plotly_chart(fig,use_container_width=True,height=200)
     
 if __name__=="__main__":
     if st.session_state["authentication_status"] is None:

@@ -34,6 +34,8 @@ def page2():
     st.sidebar.write('測試版本：V0.0.1') 
     st.sidebar.write('測試時間：',pd.Timestamp.now(tz='Asia/Shanghai')) 
 
+    col1,col2 = st.columns(2)
+    
     #判斷目前session是否有存在
     if 'df' not in st.session_state and st.button("下載資料"):
         st.session_state.df = load_data("https://github.com/plotly/datasets/raw/master/uber-rides-data1.csv")  

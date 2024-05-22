@@ -48,7 +48,7 @@ def page3():
     --select * from sqlite_master
     --where type='table';
 
-    select * from tracks;
+    select * from albums;
     """    
     table1=pd.read_sql(sql,conn)
     st.write(table1)

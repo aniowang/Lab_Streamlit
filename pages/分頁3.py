@@ -132,7 +132,7 @@ def page3():
     Txn=pd.read_sql(sql,conn)
     
     if Txn.shape[0]>0:
-        Txn_columns=st.multeselects("選取欲檢視的欄位",Txn.columns.unique())
+        Txn_columns=st.multiselect("選取欲檢視的欄位",Txn.columns.unique())
         st.write("專輯相關銷售紀錄：",Txn[Txn_columns])
     else:
         st.warning("無專輯銷售紀錄")

@@ -140,7 +140,7 @@ def page3():
 
     # with col1:
     fig=px.bar(Txn,x="InvoiceLineId",y="Bytes")
-    st.plotly_char(fig,use_container_width=True,height=200)
+    st.plotly_chart(fig,use_container_width=True,height=200)
     
 if __name__=="__main__":
     if st.session_state["authentication_status"] is None:

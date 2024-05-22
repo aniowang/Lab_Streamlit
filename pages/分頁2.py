@@ -4,7 +4,7 @@ from yaml.loader import SafeLoader
 import streamlit as st
 import pandas as pd
 import numpy as np
-
+import plotly.express as px
 
 with open('./config.yaml') as file:
     config = yaml.load(file, Loader=SafeLoader)

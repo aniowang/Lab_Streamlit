@@ -139,7 +139,7 @@ def page3():
     # col1,col2 = st.columns(2)
 
     # with col1:
-    fig=px.bar(Txn,x="Name",y="Bytes")
+    fig=px.bar(Txn,x="Name",y="Total")
     st.plotly_chart(fig,use_container_width=True,height=200)
     
 if __name__=="__main__":

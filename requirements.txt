@@ -3,5 +3,3 @@ pandas
 streamlit
 numpy
 streamlit-authenticator
-yaml
-sqlite3

@@ -68,13 +68,13 @@ def page3():
 
     #根據選擇，顯示專輯作者
     if Albums_title:
-        ArtistId=table_albums[table_albums['Title']==Albums_title]['ArtistId']
+        ArtistId=table_albums[table_albums['Title']==Albums_title]['ArtistId'][0]
         
         # st.success(fr"您選擇的專輯是：{Albums_title}")
 
         sql=f"""
         select Name from artists
-        where  ArtistId = {int(ArtistId[0])}
+        where  ArtistId = {int(ArtistId)}
         ;
         """
         Artist=pd.read_sql(sql,conn)

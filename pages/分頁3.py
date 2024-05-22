@@ -130,9 +130,10 @@ def page3():
     order by a.InvoiceId desc ;
     """
     Txn=pd.read_sql(sql,conn)
-
+    
     if Txn.shape[0]>0:
-        st.write("專輯相關銷售紀錄：",Txn)
+        Txn_columns=st.multeselects("選取欲檢視的欄位",Txn.columns.unique())
+        st.write("專輯相關銷售紀錄：",Txn[Txn_columns])
     else:
         st.warning("無專輯銷售紀錄")
 

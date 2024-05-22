@@ -84,7 +84,7 @@ def page3():
 
     #根據選擇，顯示歌曲清單
     if Albums_title:
-        AlbumId=table_albums[table_albums['Title']==Albums_title]['AlbumId']
+        AlbumId=table_albums[table_albums['Title']==Albums_title]['AlbumId'].iloc[0,0]
         
         # st.success(f"專輯歌曲有：{Albums_title}")
         sql=f"""

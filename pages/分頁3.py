@@ -70,7 +70,9 @@ def page3():
     if Albums_title:
         ArtistId=table_albums[table_albums['Title']==Albums_title]['ArtistId'][0]
         
-        # st.success(fr"您選擇的專輯是：{Albums_title}")
+        st.success(fr"您選擇的專輯是：{Albums_title}")
+
+        st.success(fr"您選擇的專輯作者是：{ArtistId}")
 
         sql=f"""
         select Name from artists

@@ -136,10 +136,10 @@ def page3():
     else:
         st.warning("無專輯銷售紀錄")
 
-    col1,col2 = st.columns(2)
+    # col1,col2 = st.columns(2)
 
-    with col1:
-        fig=px.bar(Txn,x="InvoiceLineId",y="Bytes")
+    # with col1:
+    fig=px.bar(Txn,x="InvoiceLineId",y="Bytes")
 
     
 if __name__=="__main__":

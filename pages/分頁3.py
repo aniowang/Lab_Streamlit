@@ -68,7 +68,7 @@ def page3():
 
     #根據選擇，顯示專輯作者
     if Albums_title:
-        ArtistId=table_albums[table_albums['Title']==Albums_title]['ArtistId'][0]
+        ArtistId=table_albums[table_albums['Title']==Albums_title]['ArtistId']
         
         st.success(fr"您選擇的專輯是：{Albums_title}")
 

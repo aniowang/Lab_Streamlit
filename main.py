@@ -40,6 +40,7 @@ def main_page():
     
 
 if __name__=="__main__": 
+    st.session_state["authentication_status"] = None 
     if st.session_state["authentication_status"] is None:
         """
         此為測試登入功能以及各頁面檢視權限管控之實驗頁面

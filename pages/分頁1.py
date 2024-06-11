@@ -15,10 +15,10 @@ authenticator = stauth.Authenticate(
     config['pre-authorized']
 )
 
-@st.cache_data(ttl=3600, show_spinner="正在加載資料...",experimental_allow_widgets=True)
+# @st.cache_data(ttl=3600, show_spinner="正在加載資料...",experimental_allow_widgets=True)
 def page1():
-       
-    st.write('測試時間：',pd.Timestamp.now(tz='Asia/Shanghai'))
+    st.write('[測試]填寫咖啡喜好後送出，程式接收後顯示紀錄')   
+    st.write('時間：',pd.Timestamp.now(tz='Asia/Shanghai'))
 
     #form可以一次選好條件再更新，不用每次選擇每次更新https://30days.streamlit.app/?challenge=Day22
     with st.form('選擇條件後點擊submmit'):
@@ -32,7 +32,17 @@ def page1():
     
         # Every form must have a submit button
         submitted = st.form_submit_button('Submit')
+    if submitted:
         # st.toast('確認送出囉!')
+        st.write('Coffee bean：',coffee_bean_val)
+        st.write('Coffee roast：',coffee_roast_val)
+        st.write('Brewing method：',brewing_val)
+        st.write('Serving format：',serving_type_val)
+        st.write('Milk intensity：',milk_val)
+        st.write('Bring own cup：',owncup_val)
+        cancel_input=st.button('刪除')
+        if cancel_input:
+            submited=None
     
     #添加側邊攔
     st.sidebar.write('測試版本：V0.0.1') 

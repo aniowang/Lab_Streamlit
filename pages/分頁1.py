@@ -15,7 +15,7 @@ authenticator = stauth.Authenticate(
     config['pre-authorized']
 )
 
-# @st.cache_data(ttl=3600, show_spinner="正在加載資料...",experimental_allow_widgets=True)
+@st.cache_data(ttl=3600, show_spinner="正在加載資料...",experimental_allow_widgets=True)
 def page1():
     st.write('[測試]填寫咖啡喜好後送出，程式接收後顯示紀錄')   
     st.write('時間：',pd.Timestamp.now(tz='Asia/Shanghai'))

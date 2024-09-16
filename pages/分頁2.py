@@ -21,7 +21,7 @@ authenticator = stauth.Authenticate(
     config['pre-authorized']
 )
 
-@st.cache_data(experimental_allow_widgets=True)  # 👈 Add the caching decorator
+@st.cache_data()  # 👈 Add the caching decorator
 def load_data(url):
     df = pd.read_csv(url)
     return df

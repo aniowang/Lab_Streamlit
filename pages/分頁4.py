@@ -37,7 +37,7 @@ def bi_dashboard_page():
 
     with col2:
         avg_metric2 = df['Metric2'].mean()
-        st.metric("Average Metric 2", f"{avg_value2:.2f}")
+        st.metric("Average Metric 2", f"{avg_metric2:.2f}")
 
     with col3:
         unique_regions = df['Region'].nunique()
